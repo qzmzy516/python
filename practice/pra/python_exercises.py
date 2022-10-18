@@ -137,8 +137,6 @@ import time
 #
 # print(sum_(3, 3))
 '''递进法'''
-
-
 def sum_num(a, num):
     if num == 1:
         return a
