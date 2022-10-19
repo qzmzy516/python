@@ -134,29 +134,40 @@ import time
 #         sum_n += num_sum(a, i)
 #     return sum_n
 #
+# #
+# # print(sum_(3, 3))
+# '''递进法'''
 #
-# print(sum_(3, 3))
-'''递进法'''
+#
+# def sum_num(a, num):
+#     if num == 1:
+#         return a
+#     sum_single_num = 0
+#     single_num = a
+#     for i in range(1, num):
+#         i = 10 ** i
+#         single_num += i * a
+#         sum_single_num += single_num
+#     return sum_single_num + a
+#
+#
+# print(sum_num(2, 4))
 
+# 题目17：猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，
+# 又多吃了一个第二天早上又将剩下的桃子吃掉一半，又多吃了一个。
+# 以后每天早上都吃了前一天剩下的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
 
-def sum_num(a, num):
-    if num == 1:
-        return a
-    sum_single_num = 0
-    single_num = a
-    for i in range(1, num):
-        i = 10 ** i
-        single_num += i * a
-        sum_single_num += single_num
-    return sum_single_num + a
-
-
-print(sum_num(2, 4))
-
-# 题目17：猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个第二天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
-# 题目18：两个乒乓球队进行比赛，各出三人。甲队为a,b,c三人，乙队为x,y,z三人。已抽签决定比赛名单。有人向队员打听比赛的名单。a说他不和x比，c说他不和x,z比，请编程序找出三队赛手的名单。
-# 题目19，输出以下图形
+# 题目18：两个乒乓球队进行比赛，各出三人。甲队为a,b,c三人，乙队为x,y,z三人。
+# 已抽签决定比赛名单。有人向队员打听比赛的名单。a说他不和x比，c说他不和x,z比，请编程序找出三队赛手的名单。
+jia = ['a', 'b', 'c']
+yi = ['x', 'y', 'z']
+for j in jia:
+    for y in yi:
+        if (j == 'a' and y == 'x') or (j == 'c' and y == 'x') or (j == 'c' and y == 'z'):
+            continue
+        print(f'{j}{y}')
 # 题目20：有一分数序列：2/1，3/2，5/3，8/5，13/8，21/13...求出这个数列的前20项之和。
+
 # 题目21：求1+2!+3!+...+20!的和。
 # 题目22：利用递归方法求5!。
 # 题目23：利用递归函数调用方式，将所输入的5个字符，以相反顺序打印出来。
