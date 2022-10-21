@@ -3,7 +3,7 @@ with tmp as
          (select userId,
                  visitDate,
                  visitCount,
-                 sum(visitCount) over (partition by userId order by userid
+                 sum(visitCount) over (partition by userId
                      rows between unbounded preceding and current row ) as total_sum,
                  sum(visitCount) over (partition by userid,month(visitDate)
                      rows between unbounded preceding and current row ) as month_sum
@@ -27,5 +27,6 @@ from sum_type
 where max_count = month_sum;
 -- 解题思路：
 # 1.分析结果集可以得知，需要的指标有两个，一个是每个人每月的累计，还有一个是每个人总累计
-
+# 2.使用"sum() over() rows between"的方法以userid，月份分组算出月累计，以userid算出总累计的指标
+# 3.根据每人每月累计值计算算出每月最大的那一天
 
