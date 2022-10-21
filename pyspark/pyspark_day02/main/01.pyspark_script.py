@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 from pyspark import SparkContext, SparkConf
 
 # 配置环境变量
@@ -19,16 +20,16 @@ if __name__ == "__main__":
 
     # todo:2-数据处理：读取、转换、保存
     # step1: 读取数据
-    input_rdd = sc.textFile(r'D:\python_code\python\pyspark\pyspark_day02\datas\wordcount\word.txt')
+    input_rdd = sc.textFile(r'..\datas\wordcount\word_rep.txt')
     # step2: 处理数据
     result_rdd = (input_rdd.filter(lambda x: len(x.strip()))
-                  .flatMap(lambda x: x.split(" "))
+                  .flatMap(lambda x: re.split('\\s+', x.strip()))
                   .map(lambda x: (x, 1))
                   .reduceByKey(lambda x, y: x + y)
                   )
     # step3: 保存结果
     # result_rdd.foreach(lambda x: print(x))
-    result_rdd.saveAsTextFile(path=r'D:\python_code\python\pyspark\pyspark_day02\datas\wordcount\output1')
+    result_rdd.saveAsTextFile(path=r'..\datas\wordcount\output1')
     # todo:3-关闭SparkContext
 
     sc.stop()
