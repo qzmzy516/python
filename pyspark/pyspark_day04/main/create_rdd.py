@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # step1: 读取数据
     datas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     input_rdd = sc.parallelize(datas)
-    input_rdd.foreach(lambda x: print(x))
+    input_rdd.map(lambda x: x * x).foreach(lambda x: print(x))
     # step2: 处理数据
     # step3: 保存结果
 
